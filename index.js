@@ -28,11 +28,12 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
-  
+  the "count" variable in counter2 is on the global scale and its in the block scale in counter1.
   2. Which of the two uses a closure? How can you tell?
-  
+  counter 1 because functions are inside
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+  counter 1 would be better if you wanted to reuse the function "countermaker" and counter2 would be preferable "if you needed the count variable to be saved to the global scope."
 */
 
 // counter1 code
@@ -62,8 +63,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.floor(Math.random() * 3)
 }
 
 
@@ -81,9 +82,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+
+function finalScore(callback, innNum){
+  let score = {
+    Home: 0,
+    Away: 0
+  }
+  for (let i = 0; i < innNum; i++) {
+    score.Home += callback()
+    score.Away += callback()
+  }
+  return score;
 }
+
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
